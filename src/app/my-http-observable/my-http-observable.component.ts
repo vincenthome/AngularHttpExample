@@ -19,7 +19,7 @@ export class MyHttpObservableComponent implements OnInit {
 
   users: Users;
   user: User;
-  userResponse: any;
+  userResponse: any = undefined;
 
   constructor(private dal: DalService) { }
 
