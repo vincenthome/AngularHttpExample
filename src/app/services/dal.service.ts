@@ -50,7 +50,7 @@ export class DalService {
   }
 
   getDelayedUsers(): Observable<Users> {
-    return this.httpClient.get<Users>(`${this.getUsersUrl}?delay=3`).pipe(
+    return this.httpClient.get<Users>(`${this.getUsersUrl}?delay=3&page=1`).pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
     );
