@@ -1,20 +1,16 @@
-export interface Users {
-  page:        number;
-  per_page:    number;
-  total:       number;
+export interface ReqResResponse {
+  page: number;
+  per_page: number;
+  total: number;
   total_pages: number;
-  data:        Data[];
+  data: User[] | User;
 }
 
 export interface User {
-  data: Data;
-}
-
-export interface Data {
-  id:         number;
-  email:      string;
+  id: number;
+  email: string;
   first_name: string;
-  last_name:  string;
-  avatar:     string;
+  last_name: string;
+  avatar: string;
 }
 

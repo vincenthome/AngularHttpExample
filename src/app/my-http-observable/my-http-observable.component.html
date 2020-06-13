@@ -31,14 +31,12 @@
 <button (click)="clear()">Clear All</button>
 <hr>
 
-
-
 <div class="card">
   <div class="card-body">
     <div class="card-title">User</div>
     <div *ngIf="user">
       <div class="card-text">
-        User #{{user.data.id}}: {{user.data.first_name}} {{user.data.last_name}}
+        User #{{user.id}}: {{user.first_name}} {{user.last_name}}
       </div>
     </div>
   </div>
@@ -47,7 +45,7 @@
 <div class="card">
   <div class="card-header">Users</div>
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let item of users?.data">
+    <li class="list-group-item" *ngFor="let item of users">
       #{{item.id}} {{item.first_name}} {{item.last_name}}
     </li>
   </ul>

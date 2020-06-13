@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DalService } from '../services/dal.service';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post';
-import { User, Users } from '../models/user';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-my-http-observable',
@@ -17,7 +17,7 @@ export class MyHttpObservableComponent implements OnInit {
   posts: Post[];
   post: Post;
 
-  users: Users;
+  users: User[];
   user: User;
   userResponse: any = undefined;
 

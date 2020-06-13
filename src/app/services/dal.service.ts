@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, map } from 'rxjs/operators';
 
 import { Post } from '../models/post';
-import { User, Users } from '../models/user';
+import { User, ReqResResponse } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -35,23 +35,25 @@ export class DalService {
 
 
   // Req Res
-  getUsers(): Observable<Users> {
-    return this.httpClient.get<Users>(`${this.getUsersUrl}?page=2`).pipe(
-      tap(data => console.log(data)),
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<ReqResResponse>(`${this.getUsersUrl}?page=2`).pipe(
+      // tap(res => console.log(res)),
+      map(res => res.data as User[]),
+      // tap(res => console.log(res)),
       catchError(this.handleError)
     );
   }
 
   getUser(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.getUsersUrl}/${id}`).pipe(
-      tap(data => console.log(data)),
+    return this.httpClient.get<ReqResResponse>(`${this.getUsersUrl}/${id}`).pipe(
+      map(res => res.data as User),
       catchError(this.handleError)
     );
   }
 
-  getDelayedUsers(): Observable<Users> {
-    return this.httpClient.get<Users>(`${this.getUsersUrl}?delay=3&page=1`).pipe(
-      tap(data => console.log(data)),
+  getDelayedUsers(): Observable<User[]> {
+    return this.httpClient.get<ReqResResponse>(`${this.getUsersUrl}?delay=3&page=1`).pipe(
+      map(res => res.data as User[]),
       catchError(this.handleError)
     );
   }
