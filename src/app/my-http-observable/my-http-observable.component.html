@@ -4,6 +4,31 @@
   {{errorMessage}}
 </div>
 
+<input type="text" name="id" id="id" [(ngModel)]="requestId" >
+<button (click)="getUser()">User</button>
+<button (click)="getUsers()">Users</button>
+<button (click)="get404Error()">404 Error</button>
+<button (click)="getDelayedUsers()">Delayed Users</button>
+<hr>
+<button (click)="postUser()">Post User</button>
+<button (click)="putUser()">Put User</button>
+<button (click)="patchUser()">Patch User</button>
+<button (click)="deleteUser()">Delete User</button>
+<hr>
+<button (click)="getPost()">Get Post</button>
+<button (click)="getPosts()">Get Posts</button>
+<hr>
+<button (click)="clear()">Clear All</button>
+
+<div>
+  Post Response:
+</div>
+<pre>
+  {{userResponse | json}}
+</pre>
+
+
+
 <div class="card">
   <div class="card-body">
     <div class="card-title">User</div>
@@ -35,7 +60,7 @@
 </div>
 
 <div class="card">
-  <div class="card-header">Users</div>
+  <div class="card-header">Posts</div>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let item of posts">
       #{{item.id}} - {{item.title}}

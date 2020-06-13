@@ -49,6 +49,52 @@ export class DalService {
     );
   }
 
+  getDelayedUsers(): Observable<Users> {
+    return this.httpClient.get<Users>(`${this.getUsersUrl}?delay=3`).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
+  postUser() {
+    return this.httpClient.post(this.getUsersUrl, {
+      name: 'morpheus',
+      job: 'leader',
+      email: 'jdoe@live.com',
+    }).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
+  putUser(id: number) {
+    return this.httpClient.put(`${this.getUsersUrl}/${id}`, {
+      name: 'morpheus',
+      job: 'leader',
+      email: 'jdoe@live.com',
+    }).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
+  patchUser(id: number) {
+    return this.httpClient.patch(`${this.getUsersUrl}/${id}`, {
+      name: 'morpheus',
+      job: 'leader',
+      email: 'jdoe@live.com',
+    }).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
+  deleteUser(id: number) {
+    return this.httpClient.delete(`${this.getUsersUrl}/${id}`).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
