@@ -1,10 +1,13 @@
-<p>MyHttpObservableComponent works!</p>
+<p style="padding-top: 20px;">MyHttpObservableComponent works!</p>
 
 <div *ngIf="errorMessage" class="alert alert-danger">
   {{errorMessage}}
+  <a href="https://blog.angular-university.io/rxjs-error-handling/">Comprehensive Error Handling.</a>
 </div>
 
+<label for="id">Request Id: </label>
 <input type="text" name="id" id="id" [(ngModel)]="requestId" >
+<hr>
 <button (click)="getUser()">User</button>
 <button (click)="getUsers()">Users</button>
 <button (click)="get404Error()">404 Error</button>
@@ -15,17 +18,18 @@
 <button (click)="patchUser()">Patch User</button>
 <button (click)="deleteUser()">Delete User</button>
 <hr>
+<div *ngIf="userResponse != null">
+  Post Response:
+  <pre>
+    {{userResponse | json}}
+  </pre>
+  </div>
+<hr>
 <button (click)="getPost()">Get Post</button>
 <button (click)="getPosts()">Get Posts</button>
 <hr>
 <button (click)="clear()">Clear All</button>
-
-<div>
-  Post Response:
-</div>
-<pre>
-  {{userResponse | json}}
-</pre>
+<hr>
 
 
 

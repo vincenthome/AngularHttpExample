@@ -12,7 +12,7 @@ import { User, Users } from '../models/user';
 export class MyHttpObservableComponent implements OnInit {
 
   errorMessage: string;
-  requestId: number;
+  requestId = 1;
 
   posts: Post[];
   post: Post;
@@ -32,6 +32,7 @@ export class MyHttpObservableComponent implements OnInit {
     this.post = null;
     this.users = null;
     this.user = null;
+    this.userResponse = undefined;
   }
 
   getPosts() {
@@ -88,7 +89,7 @@ export class MyHttpObservableComponent implements OnInit {
     this.dal.postUser().subscribe(
       next =>  this.userResponse = next,
       error => this.errorMessage = error
-    )
+    );
   }
 
   putUser() {
