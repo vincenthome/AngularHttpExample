@@ -1,0 +1,47 @@
+<p>MyHttpObservableComponent works!</p>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{errorMessage}}
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">User</div>
+    <div *ngIf="user">
+      <div class="card-text">
+        User #{{user.data.id}}: {{user.data.first_name}} {{user.data.last_name}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Users</div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of users?.data">
+      #{{item.id}} {{item.first_name}} {{item.last_name}}
+    </li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">Post</div>
+    <div *ngIf="post">
+      Post #{{post.id}}:
+      {{post.title}}
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Users</div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of posts">
+      #{{item.id}} - {{item.title}}
+    </li>
+  </ul>
+</div>
+
+
+
