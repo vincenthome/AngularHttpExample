@@ -19,7 +19,7 @@ export class MyHttpObservableComponent implements OnInit {
 
   users: User[];
   user: User;
-  userResponse: any = undefined;
+  rawResponse: any = undefined;
 
   constructor(private dal: DalService) { }
 
@@ -32,23 +32,7 @@ export class MyHttpObservableComponent implements OnInit {
     this.post = null;
     this.users = null;
     this.user = null;
-    this.userResponse = undefined;
-  }
-
-  getPosts() {
-    this.clear();
-    this.dal.getPosts().subscribe(
-      next => this.posts = next,
-      error => this.errorMessage = error
-      );
-  }
-
-  getPost(id: number) {
-    this.clear();
-    this.dal.getPost(this.requestId).subscribe(
-      next =>  this.post = next,
-      error => this.errorMessage = error
-    );
+    this.rawResponse = undefined;
   }
 
   getUsers() {
@@ -87,7 +71,7 @@ export class MyHttpObservableComponent implements OnInit {
   postUser() {
     this.clear();
     this.dal.postUser().subscribe(
-      next =>  this.userResponse = next,
+      next =>  this.rawResponse = next,
       error => this.errorMessage = error
     );
   }
@@ -95,7 +79,7 @@ export class MyHttpObservableComponent implements OnInit {
   putUser() {
     this.clear();
     this.dal.putUser(this.requestId).subscribe(
-      next =>  this.userResponse = next,
+      next =>  this.rawResponse = next,
       error => this.errorMessage = error
     );
   }
@@ -103,7 +87,7 @@ export class MyHttpObservableComponent implements OnInit {
   patchUser() {
     this.clear();
     this.dal.patchUser(this.requestId).subscribe(
-      next =>  this.userResponse = next,
+      next =>  this.rawResponse = next,
       error => this.errorMessage = error
     );
   }
@@ -111,7 +95,42 @@ export class MyHttpObservableComponent implements OnInit {
   deleteUser() {
     this.clear();
     this.dal.deleteUser(this.requestId).subscribe(
-      next =>  this.userResponse = next,
+      next =>  this.rawResponse = next,
+      error => this.errorMessage = error
+    );
+  }
+
+  getPosts() {
+    this.clear();
+    this.dal.getPosts().subscribe(
+      next => this.posts = next,
+      error => this.errorMessage = error
+      );
+  }
+
+  getPost(id: number) {
+    this.clear();
+    this.dal.getPost(this.requestId).subscribe(
+      next =>  this.post = next,
+      error => this.errorMessage = error
+    );
+  }
+
+  getPostFullResponse(id: number) {
+    this.clear();
+    this.dal.getPostFullResponse(this.requestId).subscribe(
+      next =>  {
+        this.rawResponse = next;
+      } ,
+      error => this.errorMessage = error
+    );
+  }
+
+  getSession() {
+    this.dal.getSession().subscribe(
+      next =>  {
+        this.rawResponse = next;
+      } ,
       error => this.errorMessage = error
     );
   }

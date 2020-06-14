@@ -18,17 +18,21 @@
 <button (click)="patchUser()">Patch User</button>
 <button (click)="deleteUser()">Delete User</button>
 <hr>
-<div *ngIf="userResponse != null">
-  Post Response:
-  <pre>
-    {{userResponse | json}}
-  </pre>
-  </div>
-<hr>
-<button (click)="getPost()">Get Post</button>
-<button (click)="getPosts()">Get Posts</button>
+<button (click)="getPost()">Get Post</button> |
+<button (click)="getPost()">Get Post</button> |
+<button (click)="getPostFullResponse()">Get Post Full Response</button>
 <hr>
 <button (click)="clear()">Clear All</button>
+<hr>
+
+<button (click)="getSession()">Get Session</button> |
+
+<div *ngIf="rawResponse != null">
+  Raw Response (next):
+<pre>
+{{rawResponse | json}}
+</pre>
+  </div>
 <hr>
 
 <div class="card">
