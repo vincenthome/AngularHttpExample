@@ -126,8 +126,8 @@ export class MyHttpObservableComponent implements OnInit {
     );
   }
 
-  getSession() {
-    this.dal.getSession().subscribe(
+  getWithHeadersOptions() {
+    this.dal.getWithHeadersOptions().subscribe(
       next =>  {
         this.rawResponse = next;
       } ,

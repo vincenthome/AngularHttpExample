@@ -117,15 +117,15 @@ export class DalService {
     );
   }
 
-  getSession() {
-    // tslint:disable-next-line: max-line-length
-    const t = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNzWnNCTmhaY0YzUTlTNHRycFFCVEJ5TlJSSSIsImtpZCI6IlNzWnNCTmhaY0YzUTlTNHRycFFCVEJ5TlJSSSJ9.eyJhdWQiOiJiMWYwMDM2OC02YzhlLTQ4NTEtYjJlNy0xZWM5ODRlYmYwODEiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zNGE1OGIxZi1iYjlmLTQ4ZTUtOTFmZi0zOTI0NDI2NzYzYmUvIiwiaWF0IjoxNTkyMDk0Mjg1LCJuYmYiOjE1OTIwOTQyODUsImV4cCI6MTU5MjA5ODE4NSwiYWlvIjoiNDJkZ1lQRFFETjI4ZGtXNi9ycUw5L2E5V1I4aHBsN3lJTjNJNVl0WXJQZmQ2NzhrZ3RNQiIsImFtciI6WyJwd2QiXSwiZmFtaWx5X25hbWUiOiJMZXVuZyIsImdpdmVuX25hbWUiOiJWaW5jZW50IiwiaGFzZ3JvdXBzIjoidHJ1ZSIsImlwYWRkciI6IjY4LjgzLjU4LjIwNCIsIm5hbWUiOiJWaW5jZW50IExldW5nIiwibm9uY2UiOiJhMWNlMDA2Ny0zYjIzLTRmYmMtYmRmMS0wYTY0NjM4NDg1NTMiLCJvaWQiOiJmODVmOWViNy0yZDRhLTRkZTEtOThjNC1jNjdiNjg2Njk4OGMiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtODYxNTY3NTAxLTY4MjAwMzMzMC03MjUzNDU1NDMtOTE5MSIsInN1YiI6Ik1mbEVnZ19FTkYzaDd3NEZ6WWd1amg5aG1QSGdvVGozZzlQS19hVUdidUUiLCJ0aWQiOiIzNGE1OGIxZi1iYjlmLTQ4ZTUtOTFmZi0zOTI0NDI2NzYzYmUiLCJ1bmlxdWVfbmFtZSI6InZpbmNlbnRsQGltbW9ubGluZS5jb20iLCJ1cG4iOiJ2aW5jZW50bEBpbW1vbmxpbmUuY29tIiwidXRpIjoiQU8tR2Qxd2s2MG1fLW9JSUMxb2xBQSIsInZlciI6IjEuMCJ9.txdMKYi--21dAVuCXfNN3skKVoBZmzreKHmaRnNzmQ6JtMg0WFjcSPqTtwihu31vovcZOzO57G6RU3aSUz_IHgi_-S4E-aFPtOySwkF7DZUrWGDLQ1tm1Q5v4uRtllvl2PS_Qo1GlhXLdDJ0d0X6U9Y5u4bmunfN0qVKiQhAV21BSLvurrXEzglX7AB7quuMu6VhZzTRYwuA1Z8mud7LDJnToSvycd3_oz7AgQQ_wSYRcDxH4n9g9YyKpqm6hWMlo6r8CaPhu6q2tCXIo3ls5YXM3JFie7jJJUKAKRBwfqLIhwqCtKm4dv4CYk-OXHe2Yv1AgQ2rZSEjecQ-Jhv5FA';
+  getWithHeadersOptions() {
+    const t = '...';
     const httpOptions = {
       headers: new HttpHeaders({
         // 'Authorization': `bearer ${t}`,
         'Content-Type': 'application/json',
       })
-    }
+    };
+    // setting bearer token
     httpOptions.headers = httpOptions.headers.set('Authorization', `Bearer ${t}`);
     return this.httpClient.get('http://ereceipts-api-dev.ubiqu.io/api/session', httpOptions).pipe(
       tap(data => console.log(data)),
